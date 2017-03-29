@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="crm_service.view_service_search" model="ir.ui.view">
+            <field name="model">crm.service</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter string="Active" name="active" domain="[('state','=','active')]"/>
+                    <filter string="Inactive" name="inactive" domain="[('state','=','inactive')]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="crm_service.view_service_tree" model="ir.ui.view">
+            <field name="name">Service</field>
+            <field name="model">crm.service</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="crm_service.view_service_form" model="ir.ui.view">
+             <field name="name">Service</field>
+             <field name="model">crm.service</field>
+             <field name="type">form</field>
+             <field name="arch" type="xml">
+                  <form>
+                      <header>
+                          <button name="action_active" string="Active" type="object" states="inactive" />
+                          <button name="action_inactive" string="Inactive" type="object" states="active" />
+                          <field name="state" widget="statusbar" statusbar_visible="active,inactive" />
+                      </header>
+                      <sheet>
+                          <group col="2" colspan="2">
+                              <field name="name" />
+                          </group>
+                      </sheet>
+                  </form>
+             </field>
+         </record>
+
         <record id="crm_service_action" model="ir.actions.act_window">
             <field name="name">Our Services</field>
             <field name="res_model">crm.service</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="crm_service.view_service_search" />
             <field name="help" type="html">
             <p class="oe_view_nocontent_create">Click to create a new service.</p>
             </field>
         </record>
 
         <menuitem
-            id="menu_crm_config_industry"
+            id="menu_crm_config_service"
             action="crm_service_action"
             name="Services"
             parent="sales_team.menu_sale_config"
