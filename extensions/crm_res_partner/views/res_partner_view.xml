@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="crm_res_partner.view_employee_form" model="ir.ui.view">
+            <field name="name">Customer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="website" position="before">
+                    <field name="contact_person" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
