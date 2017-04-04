@@ -10,9 +10,11 @@
         Classification Clients/Customer by Industry
     """,
     'depends' : ['crm'],
-    'data' : [
+    'data' :[
+        'security/ir.model.access.csv',
         'views/crm_industry_view.xml',
-        'views/res_partner_view.xml'
+        'views/crm_industry_depkeu_view.xml',
+        'views/res_partner_view.xml',
     ],
     'installable': True,
     'application' : False,

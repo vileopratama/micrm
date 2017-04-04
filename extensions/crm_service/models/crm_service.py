@@ -2,13 +2,16 @@
 from odoo import fields, models, api
 
 
-class CrmService(models.Model):
+class Service(models.Model):
     _name = 'crm.service'
     _description = 'CRM Service'
     _order = "name asc"
 
-    name = fields.Char(string='Service Name',required=True)
+    name = fields.Char(string='Service Name', required=True)
     state = fields.Selection([('active', 'Active'), ('inactive', 'Inactive')], string='Status', default='active')
+    type = fields.Selection([('audit-assurance', 'Audit & Assurance'), ('bso', 'Business Services & Outsourcing (BSO)'),
+                             ('ras', 'Risk Advisory Services (RAS)'), ('it-advisory', 'IT Advisory'), ('tax', 'Tax'),
+                             ('kjpp', 'KJPP')], string='Group', default='audit-assurance')
 
     @api.multi
     def action_active(self):

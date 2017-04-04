@@ -8,3 +8,4 @@ class ResPartner(models.Model):
     _order = "name asc"
 
     industry_id = fields.Many2one(comodel_name='crm.industry',string='Industry')
+    industry_depkeu_id = fields.Many2one(comodel_name='crm.industry.depkeu', string='Depkeu Industry')

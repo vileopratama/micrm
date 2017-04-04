@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name' : 'CRM Updated For Res Partner',
+    'name' : 'BDO CRM Updated For Res Partner',
     'version' : '10.0.1.1.0',
     'author' : 'Suhendar',
     'category' : 'CRM',

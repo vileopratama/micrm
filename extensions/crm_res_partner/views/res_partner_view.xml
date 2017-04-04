@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-         <record id="crm_industry.view_res_partner_filter" model="ir.ui.view">
+         <record id="crm_res_partner.view_res_partner_filter" model="ir.ui.view">
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="type">search</field>
@@ -20,11 +20,15 @@
             <field name="arch" type="xml">
                 <field name="website" position="before">
                     <field name="contact_person" />
+                    <field name="listed" widget="radio" />
+                    <field name="referral" widget="radio" />
+                    <field name="local" widget="radio"/>
+                    <field name="revenue" />
                 </field>
             </field>
         </record>
 
-        <record id="crm_industry.view_partner_tree" model="ir.ui.view">
+        <record id="crm_res_partner.view_partner_tree" model="ir.ui.view">
             <field name="name">Customer</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_tree"/>

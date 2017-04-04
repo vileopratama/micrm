@@ -1,2 +1,3 @@
 # -*- coding: utf-8 -*-
-import crm_service
+from . import crm_service
+from . import res_partner

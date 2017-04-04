@@ -21,6 +21,7 @@
                 <xpath expr="//div[@class='o_row']" position="after">
                     <div class="o_row">
                         <field name="industry_id" placeholder="industry" />
+                        <field name="industry_depkeu_id" placeholder="Depkeu industry" />
                     </div>
                 </xpath>
             </field>
