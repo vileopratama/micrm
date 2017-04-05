@@ -8,10 +8,44 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page name="audit_insurance" string="Audit &amp; Insurance">
-                        <separator string="Service" colspan="4"/>
+                    <page name="audit_assurance" string="Audit &amp; Insurance">
                         <field name="audit_assurance_service_ids" colspan="4" nolabel="1" >
                             <tree string="Audit &amp; Insurance Services">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="bso" string="Business Services &amp; Outsourcing">
+                        <field name="bso_service_ids" colspan="4" nolabel="1" >
+                            <tree string="Business Services &amp; Outsourcing">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="ras" string="Risk Advisory Services">
+                        <field name="ras_service_ids" colspan="4" nolabel="1" >
+                            <tree string="Risk Advisory Services">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="ras" string="IT Advisory">
+                        <field name="it_advisory_service_ids" colspan="4" nolabel="1" >
+                            <tree string="IT Advisory">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="tax" string="Tax">
+                        <field name="tax_service_ids" colspan="4" nolabel="1" >
+                            <tree string="Tax">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page name="kjpp" string="KJPP">
+                        <field name="kjpp_service_ids" colspan="4" nolabel="1" >
+                            <tree string="KJPP">
                                 <field name="name" />
                             </tree>
                         </field>

@@ -25,6 +25,10 @@
                     <field name="local" widget="radio"/>
                     <field name="revenue" />
                 </field>
+                <xpath expr="//page[@name='internal_notes']" position="replace" />
+                <page name="sales_purchases" position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </page>
             </field>
         </record>
 
