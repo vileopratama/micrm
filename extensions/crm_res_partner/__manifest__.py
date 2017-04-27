@@ -9,7 +9,7 @@
     'description': """
         Updated field customers 
     """,
-    'depends' : ['base'],
+    'depends' : ['hr'],
     'data' : [
         'views/res_partner_view.xml'
     ],

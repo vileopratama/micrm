@@ -18,6 +18,41 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="date_founding" />
+                </field>
+                <field name="child_ids" position="replace">
+                    <field name="peoples">
+                        <tree>
+                            <field name="name" />
+                            <field name="date_birth" />
+                            <field name="job_id" />
+                            <field name="state" />
+                        </tree>
+                        <form>
+                             <header>
+                                 <field name="state" widget="statusbar" statusbar_visible="active,inactive" />
+                             </header>
+                            <sheet>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name" default_focus="1" placeholder="Name"/>
+                                    </h1>
+                                </div>
+                                <group>
+                                    <group>
+                                        <field name="state" widget="radio" />
+                                        <field name="date_birth" />
+                                    </group>
+                                     <group>
+                                        <field name="job_id" />
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </field>
+                <field name="category_id" position="replace" />
                 <field name="website" position="before">
                     <field name="contact_person" />
                     <field name="listed" widget="radio" />
