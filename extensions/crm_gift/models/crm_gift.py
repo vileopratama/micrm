@@ -9,7 +9,7 @@ class Gift(models.Model):
 
     partner_id = fields.Many2one(comodel_name='res.partner', string='Client', ondelete='restrict', store=True,
                                  required=True)
-    partner_people_id = fields.Many2one(comodel_name='res.partner.people', string='People', ondelete='restrict',
+    partner_people_id = fields.Many2one(comodel_name='res.partner.peoples', string='People', ondelete='restrict',
                                         store=True, required=True)
     name = fields.Char(string='Gift name', required=True)
     image = fields.Binary("Image", attachment=True,

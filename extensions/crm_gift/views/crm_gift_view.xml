@@ -28,6 +28,8 @@
                     <field name="partner_people_id"/>
                     <field name="partner_id"/>
                     <field name="name"/>
+                    <field name="image"/>
+                    <field name="image_medium"/>
                     <field name="date_submission"/>
                     <templates>
                         <t t-name="kanban-box">
@@ -43,9 +45,9 @@
                                  <div class="oe_kanban_details">
                                      <strong class="oe_partner_heading"><field name="partner_people_id"/></strong>
                                       <ul>
-                                          <li t-if="record.partner_id.raw_value and !record.function.raw_value"><field name="partner_id"/></li>
-                                          <li t-if="record.name.raw_value and !record.function.raw_value"><field name="name"/></li>
-                                          <li t-if="record.name.raw_value and !record.function.raw_value"><field name="date_submission"/></li>
+                                          <li t-if="record.partner_id"><field name="partner_id"/></li>
+                                          <li t-if="record.name"><field name="name"/></li>
+                                          <li t-if="record.date_submission"><field name="date_submission"/></li>
                                     </ul>
                                  </div>
                              </div>
@@ -79,7 +81,7 @@
 	                    <field name="state" widget="statusbar" clickable="True"/>
                     </header>
                     <sheet>
-                        <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                        <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image", "size": [120, 120]}'/>
                         <div class="oe_title">
                         <h1><field name="name" placeholder="Gift Name"/></h1>
                         </div>
