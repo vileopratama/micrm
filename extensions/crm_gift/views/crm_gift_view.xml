@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="crm_gift.crm_gift_filter" model="ir.ui.view">
+            <field name="name">crm.gift.search</field>
+            <field name="model">crm.gift</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Gift">
+                    <field name="name"/>
+                    <field name="partner_id" string="Client"/>
+                    <field name="partner_people_id" string="Management"/>
+                    <separator/>
+                    <filter string="Plan" name="plan" domain="[('state', '=', 'plan')]"/>
+                    <filter string="Sent" name="sent" domain="[('state', '=', 'sent')]"/>
+                    <group expand="0" string="Group By" colspan="16">
+                        <filter string="Client" context="{'group_by':'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="crm_gift.crm_gift_kanban" model="ir.ui.view">
+            <field name="name">crm.gift.kanban</field>
+            <field name="model">crm.gift</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name="partner_people_id"/>
+                    <field name="partner_id"/>
+                    <field name="name"/>
+                    <field name="date_submission"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                             <div class="oe_kanban_global_click o_res_partner_kanban">
+                                 <div class="o_kanban_image">
+                                     <t t-if="record.image.raw_value">
+                                        <img t-att-src="kanban_image('crm.gift', 'image', record.id.value)"/>
+                                    </t>
+                                     <t t-if="!record.image.raw_value">
+                                         <img t-att-src='_s + "/base/static/src/img/truck.png"' class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                                     </t>
+                                 </div>
+                                 <div class="oe_kanban_details">
+                                     <strong class="oe_partner_heading"><field name="partner_people_id"/></strong>
+                                      <ul>
+                                          <li t-if="record.partner_id.raw_value and !record.function.raw_value"><field name="partner_id"/></li>
+                                          <li t-if="record.name.raw_value and !record.function.raw_value"><field name="name"/></li>
+                                          <li t-if="record.name.raw_value and !record.function.raw_value"><field name="date_submission"/></li>
+                                    </ul>
+                                 </div>
+                             </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="crm_gift.crm_gift_tree" model="ir.ui.view">
+            <field name="name">crm.gift.tree</field>
+            <field name="model">crm.gift</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                    <field name="partner_people_id"/>
+                    <field name="date_submission"/>
+                    <field name="state"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="crm_gift.crm_gift_form" model="ir.ui.view">
+            <field name="name">crm.gift.form</field>
+            <field name="model">crm.gift</field>
+	        <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+	                    <field name="state" widget="statusbar" clickable="True"/>
+                    </header>
+                    <sheet>
+                        <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+                        <div class="oe_title">
+                        <h1><field name="name" placeholder="Gift Name"/></h1>
+                        </div>
+                         <group>
+                             <group>
+                                 <field name="partner_id"/>
+                                 <field name="partner_people_id"/>
+                             </group>
+                             <group>
+                                 <field name="date_submission"/>
+                                 <field name="note"/>
+                             </group>
+                         </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_gift.crm_gift_act_window" model="ir.actions.act_window">
+            <field name="name">Gift</field>
+            <field name="res_model">crm.gift</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="crm_gift.crm_gift_kanban"/>
+            <field name="search_view_id" ref="crm_gift.crm_gift_filter"/>
+            <field name="help" type="html">
+                <p>
+                    Create a new gift for client
+                </p>
+            </field>
+        </record>
+        <menuitem
+                id="menu_crm_proposal"
+                action="crm_gift.crm_gift_act_window"
+                parent="sales_team.menu_sales"
+                sequence="6"/>
+    </data>
+</odoo>
