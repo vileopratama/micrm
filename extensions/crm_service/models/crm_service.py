@@ -13,6 +13,10 @@ class Service(models.Model):
                              ('ras', 'Risk Advisory Services (RAS)'), ('it-advisory', 'IT Advisory'), ('tax', 'Tax'),
                              ('kjpp', 'KJPP')], string='Group', default='audit-assurance')
 
+    _sql_constraints = [
+        ('unique_name', 'unique (name)', 'Service must be unique!'),
+    ]
+
     @api.multi
     def action_active(self):
         return self.write({'state': 'active'})

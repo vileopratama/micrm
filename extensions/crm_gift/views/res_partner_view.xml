@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--<record id="crm_gift.view_partner_form" model="ir.ui.view">
+            <field name="name">Partner Form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data>
+                    <div name="button_box" position="inside">
+
+
+                    </div>
+                </data>
+            </field>
+        </record>-->
+
+        <record id="crm_gift.view_partners_form_crm1" model="ir.ui.view">
+            <field name="name">view.res.partner.form.crm.inherited1</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="crm.view_partners_form_crm1"/>
+            <field eval="18" name="priority"/>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="replace">
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button o_res_partner_tip_opp" type="action"
+                                attrs="{'invisible': [('customer', '=', False)]}"
+                                name="%(crm_gift.crm_gift_act_window)d"
+                                icon="fa-gift"
+                                context="{'search_default_partner_id': active_id}">
+                            <field string="Gift" name="gift_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

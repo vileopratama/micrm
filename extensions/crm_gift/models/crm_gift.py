@@ -28,3 +28,5 @@ class Gift(models.Model):
             return {'domain': {'partner_people_id': [('partner_id', '=', self.partner_id.id)]}}
         else:
             return {'domain': {'partner_people_id': [('partner_id', '=', 0)]}}
+			
+

@@ -18,7 +18,8 @@ class ResPartner(models.Model):
     revenue = fields.Float(string='Revenue')
     peoples = fields.One2many(comodel_name='res.partner.peoples', inverse_name='partner_id', string='Management',
                               copy=True)
-
+				
+				
 class ResPartnerPeople(models.Model):
     _name = "res.partner.peoples"
     _description = "Management"

@@ -10,6 +10,10 @@ class CrmIndustry(models.Model):
     name = fields.Char(string='Industry Name',required=True)
     state = fields.Selection([('active', 'Active'), ('inactive', 'Inactive')], string='Status', default='active')
 
+    _sql_constraints = [
+        ('unique_name', 'unique (name)', 'Industry must be unique!'),
+    ]
+
     @api.multi
     def action_active(self):
         return self.write({'state': 'active'})
