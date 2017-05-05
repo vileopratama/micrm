@@ -21,4 +21,18 @@
         <field name="description">Birthday notifications.</field>
     </record>
 
+    <record id="email_partner_people_template_birthday" model="mail.template">
+        <field name="name">Client Management Birthday Wish</field>
+        <field name="model_id" ref="model_res_partner_peoples"/>
+        <field name="email_from">${(user.email)|safe}</field>
+        <field name="email_to">${(object.email)}</field>
+        <field name="subject">Birthday Wishes !!!</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear ${object.name},</p>
+                <img src="/crm_birthday/static/src/img/graphics-happy-birthday-161793.gif"/>
+                <p> Wishing you the very best as you celebrate your big day. Happy Birthday to you from all of us!</p>
+            ]]>
+        </field>
+    </record>
 </odoo>

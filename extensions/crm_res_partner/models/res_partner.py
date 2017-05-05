@@ -27,6 +27,7 @@ class ResPartnerPeople(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Client', ondelete='cascade')
     name = fields.Char(string='Name', required=True, copy=False)
+    email = fields.Char(string='Email', required=True, copy=False)
     job_id = fields.Many2one(comodel_name='hr.job',string='Title', required=True, copy=False)
     date_birth = fields.Date(string='Birthdate', required=True, copy=False)
     state = fields.Selection(selection=[('active','Active'),('inactive','Inactive')],string='State',default='active')

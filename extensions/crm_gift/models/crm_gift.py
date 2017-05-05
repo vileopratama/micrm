@@ -21,6 +21,7 @@ class Gift(models.Model):
     state = fields.Selection(selection=[('plan', 'Plan'), ('sent', 'Sent')], default='sent', string='State')
     note = fields.Text(string='Note')
     date_submission = fields.Date(string='Date of submission', required=True, copy=False)
+    value = fields.Float(string='Gift Value',required=True)
 
     @api.onchange('partner_id')
     def _onchange_partner_people_id(self):
