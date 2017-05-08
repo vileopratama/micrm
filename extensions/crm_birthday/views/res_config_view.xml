@@ -8,6 +8,12 @@
             <field name="arch" type="xml">
                 <xpath expr="//group" position="after">
                     <group>
+                        <label for="notif_birthday_mail_template"/>
+                        <div>
+                            <div>
+                                <field name="notif_birthday_mail_template" class="oe_inline"/>
+                            </div>
+                        </div>
                         <label for="birthday_mail_template"/>
                         <div>
                             <div>

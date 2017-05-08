@@ -13,9 +13,10 @@
         'migrate/template_migrate.xml',
         'views/res_config_view.xml',
         'scheduler/res_partner_scheduler.xml',
+        'views/res_users_view.xml',
     ],
     'images': [
-        # 'static/description/banner.jpg',
+
     ],
     "installable": True,
     "auto_install": False,

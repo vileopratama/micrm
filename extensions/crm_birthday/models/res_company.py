@@ -10,3 +10,5 @@ class ResCompany(models.Model):
                                              help="This will set the default mail template for birthday wishes.")
     birthday_people_mail_template = fields.Many2one('mail.template', string='Birthday Management Wishes Template',
                                              help="This will set the default mail template for birthday wishes Client Management.")
+    notif_birthday_mail_template = fields.Many2one('mail.template', string='Notif User for Birthday Client Template',
+                                                   help="This will set the default mail template for user notif birthday wishes.")

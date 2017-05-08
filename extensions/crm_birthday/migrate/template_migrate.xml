@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="email_user_notif_client_birthday_template" model="mail.template">
+        <field name="name">User Notif Client Birthday</field>
+        <field name="model_id" ref="model_res_users"/>
+        <field name="email_from">${(user.email)|safe}</field>
+        <field name="email_to">${(object.email)}</field>
+        <field name="subject">Client Birthday!!!</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear ${object.name},</p>
+                <img src="/crm_birthday/static/src/img/graphics-happy-birthday-161793.gif"/>
+                <p> This client is a birthday wish!</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="channel_user_notif_client_birthday" model="mail.channel">
+        <field name="name">User Notif Client Birthday Wishes</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="description">User notif Birthday</field>
+    </record>
+
+    <record id="email_partner_template_birthday" model="mail.template">
+        <field name="name">Client Birthday Wish</field>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="email_from">${(user.email)|safe}</field>
+        <field name="email_to">${(object.email)}</field>
+        <field name="subject">Birthday Wishes!!!</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear ${object.name},</p>
+                <img src="/crm_birthday/static/src/img/graphics-happy-birthday-161793.gif"/>
+                <p> Wishing you the very best as you celebrate your big day. Happy Birthday to you from all of us!</p>
+            ]]>
+        </field>
+    </record>
+
     <record id="email_partner_template_birthday" model="mail.template">
         <field name="name">Client Birthday Wish</field>
         <field name="model_id" ref="model_res_partner"/>
@@ -34,5 +70,10 @@
                 <p> Wishing you the very best as you celebrate your big day. Happy Birthday to you from all of us!</p>
             ]]>
         </field>
+    </record>
+    <record model="mail.channel" id="channel_partner_people_birthday">
+        <field name="name">Client people Birthday Wishes</field>
+        <field name="group_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="description">Birthday notifications.</field>
     </record>
 </odoo>
