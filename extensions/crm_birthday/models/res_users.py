@@ -6,26 +6,51 @@ from datetime import datetime, timedelta, time
 class ResUser(models.Model):
     _inherit = 'res.users'
 
-    notif_mail_client_birthday = fields.Boolean(string='Notif Mail Client Birthday',default=False)
+    notif_mail_client_birthday = fields.Boolean(string='Notif Mail Client Birthday', default=False)
 
     @api.multi
     def send_mail_notif(self):
-        ir_data = self.env['ir.model.data']
-        base_template = ir_data.get_object('crm_birthday', 'email_user_notif_client_birthday_template')
-        channel = ir_data.get_object('crm_birthday', 'channel_user_notif_client_birthday')
+        email_obj = self.env.get('mail.template')
+        emails = email_obj.search([('name', '=', 'User Notif Client Birthday')])
+
         today = datetime.now()
         today_month_day = '%-' + today.strftime('%m') + '-' + today.strftime('%d')
 
-        for partner in self.env['res.partner'].search([('date_founding', 'like', today_month_day)]):
-            for user in self.env['res.users'].search([('notif_mail_client_birthday', '=', True)]):
-                if user.email:
-                    if user.company_id.notif_birthday_mail_template and user.company_id.notif_birthday_mail_template.id:
-                        user.company_id.notif_birthday_mail_template.sudo().send_mail(user.id, force_send=True)
-                    else:
-                        base_template.sudo().send_mail(user.id, force_send=True)
+        sql = " select name,to_char((date_founding), 'DD/MM/YYYY') as date_founding " \
+              " FROM res_partner  " \
+              " WHERE to_char((date_founding - interval '7 day'), 'YYYY-MM-DD') LIKE '%" + today_month_day + "%' "
+        self.env.cr.execute(sql)
+        partners = self.env.cr.dictfetchall()
 
-                res = channel.message_post(body=_('Happy Birthday Dear %s.') % (user.name), user_ids=[user.id])
-                res.write({'channel_ids': [[6, False, [channel.id]]]})
-                user.message_post(body=_('Notif User.'))
+        for partner in partners:
+            for email in emails:
+                for user in self.env['res.users'].search([('notif_mail_client_birthday', '=', True)]):
+                    email.write({
+                        'email_from': 'no-reply@bdo.co.id',
+                        'email_to': user.email,
+                        'subject': 'CRM BDOMI - Client Birthday',
+                        'body_html': _('Dear %s.') % (user.name) + '<br/><br/>' + _('Client %s.') % (partner['name']) +
+                                     _('Is Birthday in %s.') % (partner['date_founding']),
+                    })
+                    email.sudo().send_mail(1, force_send=True)
 
-        return None
+        sql = " select res_partner_peoples.name,res_partner.name as client_name,to_char((res_partner_peoples.date_birth), 'DD/MM/YYYY') as date_birth " \
+              " FROM res_partner_peoples " \
+              " inner join res_partner on (res_partner.id = res_partner_peoples.partner_id) " \
+              " WHERE to_char((date_birth - interval '7 day'), 'YYYY-MM-DD') LIKE '%" + today_month_day + "%'; "
+        self.env.cr.execute(sql)
+        partner_peoples = self.env.cr.dictfetchall()
+
+        for partner_people in partner_peoples:
+            for email in emails:
+                for user in self.env['res.users'].search([('notif_mail_client_birthday', '=', True)]):
+                    email.write({
+                        'email_from': 'no-reply@bdo.co.id',
+                        'email_to': user.email,
+                        'subject': 'CRM BDOMI - Client Birthday',
+                        'body_html': _('Dear %s.') % (user.name) + '<br/><br/>' + _('People %s.') % (
+                            partner_people['name'])
+                                     + _(' of the Client %s.') % (partner_people['client_name']) + _(
+                            'Is Birthday in %s.') % (partner_people['date_birth']),
+                    })
+                    email.sudo().send_mail(1, force_send=True)

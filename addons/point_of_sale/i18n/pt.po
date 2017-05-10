@@ -699,7 +699,7 @@ msgstr "Cidade"
 #. module: point_of_sale
 #: model:ir.actions.act_window,help:point_of_sale.product_product_action
 msgid "Click to add a new product."
-msgstr "Clique para adicionar um novo produto"
+msgstr "Clique para adicionar um novo produto."
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,help:point_of_sale.action_account_journal_form
@@ -709,12 +709,12 @@ msgstr "Clique para adicionar um método de pagamento."
 #. module: point_of_sale
 #: model:ir.actions.act_window,help:point_of_sale.action_pos_config_kanban
 msgid "Click to create a new PoS config."
-msgstr "Clique para adicionar uma nova config. de POS"
+msgstr "Clique para adicionar uma nova configuração de POS."
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,help:point_of_sale.action_pos_pos_form
 msgid "Click to create a new order."
-msgstr "Clique para criar uma nova ordem."
+msgstr "Clique para criar um novo pedido."
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,help:point_of_sale.product_pos_category_action
@@ -883,7 +883,7 @@ msgstr "Sessão Corrente"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config_current_session_state
 msgid "Current session state"
-msgstr ""
+msgstr "Estado da sessão atual"
 
 #. module: point_of_sale
 #. openerp-web
@@ -1135,7 +1135,7 @@ msgstr "Ekomurz.nl"
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config_iface_electronic_scale
 #, python-format
 msgid "Electronic Scale"
-msgstr "Balança Electrónica"
+msgstr "Balança Eletrónica"
 
 #. module: point_of_sale
 #. openerp-web
@@ -1294,7 +1294,7 @@ msgstr "Frutas e Vegetais"
 #. module: point_of_sale
 #: model:ir.ui.view,arch_db:point_of_sale.view_pos_pos_form
 msgid "General Information"
-msgstr "Informação geral"
+msgstr "Informação Geral"
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_category_sequence
@@ -1454,7 +1454,7 @@ msgstr "Incluir Impostos nos Preços"
 #: code:addons/point_of_sale/static/src/js/gui.js:266
 #, python-format
 msgid "Incorrect Password"
-msgstr "Password Incorrecta"
+msgstr "Palavra-passe Incorreta"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order_note
@@ -1636,7 +1636,7 @@ msgstr "Dar entrada de Número de Sequência"
 #: code:addons/point_of_sale/static/src/js/gui.js:293
 #, python-format
 msgid "Login as a Manager"
-msgstr "Inicie a sessão como um Gestor"
+msgstr "Iniciar sessão como um Gestor"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_pack_operation_lot_lot_name
@@ -2107,7 +2107,7 @@ msgstr "Serviços do Parceiro"
 #: code:addons/point_of_sale/static/src/js/gui.js:263
 #, python-format
 msgid "Password ?"
-msgstr "Password ?"
+msgstr "Palavra-passe?"
 
 #. module: point_of_sale
 #: model:ir.ui.view,arch_db:point_of_sale.view_pos_payment
@@ -2902,7 +2902,7 @@ msgstr "Categorias de Início"
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_details_wizard_start_date
 msgid "Start date"
-msgstr "Data inicial"
+msgstr "Data de Início"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_session_cash_register_balance_start
