@@ -82,6 +82,10 @@
                 <field name="phone" position="before">
                     <field name="contact_person" />
                 </field>
+                <field name="email" position="replace">
+                    <field name="revenue" />
+                    <field name="fee" />
+                </field>
             </field>
         </record>
     </data>
