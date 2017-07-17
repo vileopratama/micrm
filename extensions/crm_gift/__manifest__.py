@@ -11,8 +11,9 @@
     """,
     'depends' : ['crm'],
     'data' : [
+        'security/ir.model.access',
         'views/crm_gift_view.xml',
-		'views/res_partner_view.xml',
+	'views/res_partner_view.xml',
     ],
     'installable': True,
     'application' : False,
