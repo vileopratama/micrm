@@ -11,7 +11,8 @@
     """,
     'depends' : ['hr'],
     'data' : [
-        'views/res_partner_view.xml'
+        'security/ir.model.access.csv',
+        'views/res_partner_view.xml',
     ],
     'installable': True,
     'application' : False,
