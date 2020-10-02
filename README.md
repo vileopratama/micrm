@@ -3,10 +3,11 @@
 [![Help](http://img.shields.io/badge/10.0-help-875A7B.svg?style=flat)](https://www.odoo.com/forum/help-1)
 [![Nightly Builds](http://img.shields.io/badge/10.0-nightly-875A7B.svg?style=flat)](http://nightly.odoo.com/)
 
-Odoo
+Odoo 
 ----
 
 Odoo is a suite of web based open source business apps.
+Odoo is business management software including CRM, e-commerce, billing, accounting, manufacturing, warehouse, project management, and inventory management. The Community version is libre software, licensed under the GNU LGPLv3. There is also a proprietary "Enterprise" version, which has extra features and services
 
 The main Odoo Apps include an <a href="https://www.odoo.com/page/crm">Open Source CRM</a>,
 <a href="https://www.odoo.com/page/website-builder">Website Builder</a>,
