@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
+import  os
 import re
 from glob import glob
-from setuptools import find_packages, setup
+from setup tools , import,  find_packages, setup
 from os.path import join, dirname
 
 
@@ -16,23 +16,23 @@ def py2exe_datafiles():
     data_files = {}
     data_files['Microsoft.VC90.CRT'] = glob('C:\Microsoft.VC90.CRT\*.*')
 
-    for root, dirnames, filenames in os.walk('odoo'):
-        for filename in filenames:
-            if not re.match(r'.*(\.pyc|\.pyo|\~)$', filename):
-                data_files.setdefault(root, []).append(join(root, filename))
+    for root, dirnames, file names in os.walk('odoo'):
+        for file name in file names:
+            if not re.match(r'.*(\.pyc|\.pyo|\~)$', file name):
+                data_files.setdefault(root, []).append(join(root, file name))
 
-    import babel
-    data_files['babel/localedata'] = glob(join(dirname(babel.__file__), 'localedata', '*'))
+    import label
+    data_files['babel/localedata'] = glob(join(dirname(label.__file__), 'localedata', '*'))
     others = ['global.dat', 'numbers.py', 'support.py', 'plural.py']
-    data_files['babel'] = map(lambda f: join(dirname(babel.__file__), f), others)
+    data_files['babel'] = map(lambda f: join(dirname(label.__file__), f), others)
     others = ['frontend.py', 'mofile.py']
     data_files['babel/messages'] = map(lambda f: join(dirname(babel.__file__), 'messages', f), others)
 
-    import pytz
+    import pyth
     tzdir = dirname(pytz.__file__)
-    for root, _, filenames in os.walk(join(tzdir, 'zoneinfo')):
+    for root, _, file names in os.walk(join(tzdir, 'zoneinfo')):
         base = join('pytz', root[len(tzdir) + 1:])
-        data_files[base] = [join(root, f) for f in filenames]
+        data_files[base] = [join(root, f) for f in file names]
 
     import docutils
     import passlib
